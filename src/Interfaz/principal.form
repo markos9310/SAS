@@ -96,13 +96,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbIdentificador" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="txtIdentificador" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="btnBuscar" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="btnBorrar" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -117,10 +117,10 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="jComboBox1" alignment="2" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="2" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="cmbIdentificador" alignment="2" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="txtIdentificador" alignment="2" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btnBuscar" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnBorrar" alignment="2" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -147,7 +147,7 @@
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cmbIdentificador">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
@@ -164,14 +164,14 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtIdentificador">
           <Properties>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
               <Insets value="[6, 6, 2, 6]"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnBuscar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="82" red="f" type="rgb"/>
@@ -181,7 +181,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnBorrar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="82" red="f" type="rgb"/>
@@ -209,8 +209,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanel3" max="32767" attributes="0"/>
-                              <Component id="jPanel4" max="32767" attributes="0"/>
+                              <Component id="pnlDatosCliente" max="32767" attributes="0"/>
+                              <Component id="pnlDomicilioFacturacion" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTabbedPane1" max="32767" attributes="0"/>
@@ -228,9 +228,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel4" max="32767" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jTabbedPane1" max="32767" attributes="0"/>
                   </Group>
@@ -242,7 +242,7 @@
       <SubComponents>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="pnlDatosCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="28" green="28" red="28" type="rgb"/>
@@ -275,11 +275,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblNombre" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblDni" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblId" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblTelefono" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblEmail" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
@@ -293,27 +293,27 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblDni" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDatosCliente_lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="139" max="32767" attributes="0"/>
                   </Group>
@@ -349,7 +349,7 @@
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="pnlDatosCliente_lblNombre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ROY MARKOS HUAYTA LAURA"/>
               </Properties>
@@ -386,29 +386,29 @@
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel19">
+            <Component class="javax.swing.JLabel" name="pnlDatosCliente_lblDni">
               <Properties>
                 <Property name="text" type="java.lang.String" value="48322105"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel20">
+            <Component class="javax.swing.JLabel" name="pnlDatosCliente_lblId">
               <Properties>
                 <Property name="text" type="java.lang.String" value="2231892118"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel21">
+            <Component class="javax.swing.JLabel" name="pnlDatosCliente_lblTelefono">
               <Properties>
                 <Property name="text" type="java.lang.String" value="985925608"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel22">
+            <Component class="javax.swing.JLabel" name="pnlDatosCliente_lblEmail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="MARKOS9310@GMAIL.COM"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel4">
+        <Container class="javax.swing.JPanel" name="pnlDomicilioFacturacion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="28" green="28" red="28" type="rgb"/>
@@ -443,13 +443,13 @@
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblDepartamento" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblProvincia" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblDistrito" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblUrb" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblInterior" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblNumeroCasa" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblCalle" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -463,37 +463,37 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblCalle" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblNumeroCasa" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblInterior" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblUrb" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblDistrito" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlDomicilioFacturacion_lblDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -529,7 +529,7 @@
                 <Property name="text" type="java.lang.String" value="Calle/Avenida"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel12">
+            <Component class="javax.swing.JLabel" name="pnlDomicilioFacturacion_lblCalle">
               <Properties>
                 <Property name="text" type="java.lang.String" value="VILLA UNI&#xd3;N"/>
               </Properties>
@@ -582,32 +582,32 @@
                 <Property name="text" type="java.lang.String" value="Departamento"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel23">
+            <Component class="javax.swing.JLabel" name="pnlDomicilioFacturacion_lblNumeroCasa">
               <Properties>
                 <Property name="text" type="java.lang.String" value="MZ D LOTE 13"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel24">
+            <Component class="javax.swing.JLabel" name="pnlDomicilioFacturacion_lblInterior">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N/A"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel25">
+            <Component class="javax.swing.JLabel" name="pnlDomicilioFacturacion_lblUrb">
               <Properties>
                 <Property name="text" type="java.lang.String" value="VILLA UNI&#xd3;N"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel26">
+            <Component class="javax.swing.JLabel" name="pnlDomicilioFacturacion_lblDistrito">
               <Properties>
                 <Property name="text" type="java.lang.String" value="VILLA MAR&#xcd;A DEL TRIUNFO"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel27">
+            <Component class="javax.swing.JLabel" name="pnlDomicilioFacturacion_lblProvincia">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LIMA"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel28">
+            <Component class="javax.swing.JLabel" name="pnlDomicilioFacturacion_lblDepartamento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LIMA"/>
               </Properties>
@@ -642,16 +642,16 @@
                           </Group>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel40" max="32767" attributes="0"/>
-                              <Component id="jLabel38" max="32767" attributes="0"/>
-                              <Component id="jLabel33" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel36" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel32" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel30" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblFechaCancelacion" max="32767" attributes="0"/>
+                              <Component id="lblFechaContrato" max="32767" attributes="0"/>
+                              <Component id="lblVelocidad" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblEstadoServicio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblTipoServicio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblIdServicio" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jPanel8" alignment="1" max="32767" attributes="0"/>
+                      <Component id="pnlDireccionInstalacion" alignment="1" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -660,35 +660,35 @@
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblIdServicio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTipoServicio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblVelocidad" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEstadoServicio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFechaContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFechaCancelacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jPanel8" max="32767" attributes="0"/>
+                          <Component id="pnlDireccionInstalacion" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -702,7 +702,7 @@
                     <Property name="text" type="java.lang.String" value="Id. Servicio"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel30">
+                <Component class="javax.swing.JLabel" name="lblIdServicio">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="1234567890"/>
                   </Properties>
@@ -715,12 +715,12 @@
                     <Property name="text" type="java.lang.String" value="Tipo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel32">
+                <Component class="javax.swing.JLabel" name="lblTipoServicio">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Internet FTTH"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel33">
+                <Component class="javax.swing.JLabel" name="lblVelocidad">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="500 MBPS"/>
                   </Properties>
@@ -741,7 +741,7 @@
                     <Property name="text" type="java.lang.String" value="Estado:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel36">
+                <Component class="javax.swing.JLabel" name="lblEstadoServicio">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Activo"/>
                   </Properties>
@@ -754,7 +754,7 @@
                     <Property name="text" type="java.lang.String" value="Fecha de contrataci&#xf3;n:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel38">
+                <Component class="javax.swing.JLabel" name="lblFechaContrato">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="2023-10-21 08:05:00 "/>
                   </Properties>
@@ -767,12 +767,12 @@
                     <Property name="text" type="java.lang.String" value="Fecha de cancelaci&#xf3;n:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel40">
+                <Component class="javax.swing.JLabel" name="lblFechaCancelacion">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="2023-10-21 08:05:00 "/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JPanel" name="jPanel8">
+                <Container class="javax.swing.JPanel" name="pnlDireccionInstalacion">
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -793,14 +793,14 @@
                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pnlDireccionInstalacion_lblUrb" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel65" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel58" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblInterior" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblNumeroCasa" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblCalle" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="227" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -810,9 +810,9 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel70" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel69" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel68" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblDepartamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblProvincia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblDistrito" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                                   </Group>
@@ -830,40 +830,40 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblCalle" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblNumeroCasa" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblInterior" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblDistrito" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pnlDireccionInstalacion_lblDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel67" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlDireccionInstalacion_lblUrb" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="99" max="32767" attributes="0"/>
                           </Group>
@@ -896,7 +896,7 @@
                         <Property name="text" type="java.lang.String" value="Calle/Avenida"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel58">
+                    <Component class="javax.swing.JLabel" name="pnlDireccionInstalacion_lblCalle">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="VILLA UNI&#xd3;N"/>
                       </Properties>
@@ -949,32 +949,32 @@
                         <Property name="text" type="java.lang.String" value="Departamento"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel65">
+                    <Component class="javax.swing.JLabel" name="pnlDireccionInstalacion_lblNumeroCasa">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="MZ D LOTE 13"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel66">
+                    <Component class="javax.swing.JLabel" name="pnlDireccionInstalacion_lblInterior">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="N/A"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel67">
+                    <Component class="javax.swing.JLabel" name="pnlDireccionInstalacion_lblUrb">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="VILLA UNI&#xd3;N"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel68">
+                    <Component class="javax.swing.JLabel" name="pnlDireccionInstalacion_lblDistrito">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="VILLA MAR&#xcd;A DEL TRIUNFO"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel69">
+                    <Component class="javax.swing.JLabel" name="pnlDireccionInstalacion_lblProvincia">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="LIMA"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel70">
+                    <Component class="javax.swing.JLabel" name="pnlDireccionInstalacion_lblDepartamento">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="LIMA"/>
                       </Properties>
@@ -1001,7 +1001,7 @@
                               <Component id="jScrollPane1" alignment="0" pref="920" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnNuevaInteraccion" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1012,7 +1012,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="btnNuevaInteraccion" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" pref="559" max="32767" attributes="0"/>
                       </Group>
@@ -1027,7 +1027,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="tblInteracciones">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="6" rowCount="3">
@@ -1109,7 +1109,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="btnNuevaInteraccion">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="82" red="f" type="rgb"/>
@@ -1123,7 +1123,7 @@
                     <Property name="text" type="java.lang.String" value="Nueva Interacci&#xf3;n"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevaInteraccionActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
