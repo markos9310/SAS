@@ -9,13 +9,17 @@ package Interfaz;
 
 import javax.swing.*;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import conexion.ConexionDB;
+import java.sql.*;
 
 /**
  *
  * @author marko
  */
 public class nueva_interaccion extends javax.swing.JFrame {
-
+private int idServicio;
+    private String dniCliente;
+    private String nombreCliente;
     /**
      * Creates new form principal
      */
@@ -23,6 +27,21 @@ public class nueva_interaccion extends javax.swing.JFrame {
         FlatMacDarkLaf.setup();
         initComponents();
         
+    }
+    
+    
+
+    nueva_interaccion(int idServicio, String dniCliente, String nombreCliente) {
+       this.idServicio = idServicio;
+        this.dniCliente = dniCliente;
+        this.nombreCliente = nombreCliente;
+        FlatMacDarkLaf.setup();
+        initComponents();
+        this.setLocationRelativeTo(null);
+        // Asignar valores a los labels
+        lblIdServicio.setText(String.valueOf(idServicio));
+        lblDni.setText(dniCliente);
+        lblNombre.setText(nombreCliente);
     }
 
     /**
@@ -166,13 +185,22 @@ public class nueva_interaccion extends javax.swing.JFrame {
         jLabel12.setText("Sub Clase:");
 
         cmbTipo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CONSULTA", "SOLICITUD" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CONSULTA", "SOLICITUD", "RECLAMO" }));
+        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoActionPerformed(evt);
+            }
+        });
 
         cmbClase.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        cmbClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VENTA", "POSTVENTA", "OTROS" }));
+        cmbClase.setName(""); // NOI18N
+        cmbClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClaseActionPerformed(evt);
+            }
+        });
 
         cmbSubClase.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        cmbSubClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SERVICIO", "CLIENTE" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -384,6 +412,87 @@ public class nueva_interaccion extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_btnCerrarInteraccionActionPerformed
 
+    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
+        // Obten el item seleccionado
+    String tipoSeleccionado = (String) cmbTipo.getSelectedItem();
+    // Actualiza las clases en base al tipo seleccionado
+    actualizarClases(tipoSeleccionado);
+    }//GEN-LAST:event_cmbTipoActionPerformed
+
+    private void cmbClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClaseActionPerformed
+        // Obten el item seleccionado
+    String claseSeleccionada = (String) cmbClase.getSelectedItem();
+    // Actualiza las subclases en base a la clase seleccionada
+    actualizarSubClases(claseSeleccionada);
+    }//GEN-LAST:event_cmbClaseActionPerformed
+    
+    private void actualizarSubClases(String claseSeleccionada) {
+    int idClase = obtenerIdClase(claseSeleccionada); // Método para obtener el ID de la clase
+    try (Connection conexion = ConexionDB.getConnection()) {
+        String query = "SELECT descripcion_subclase FROM SubclaseInteraccion WHERE id_clase_subclase = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(query);
+        pstmt.setInt(1, idClase);
+        ResultSet rs = pstmt.executeQuery();
+        
+        cmbSubClase.removeAllItems(); // Limpiar el combobox antes de añadir nuevos ítems
+        while (rs.next()) {
+            cmbSubClase.addItem(rs.getString("descripcion_subclase"));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+    private int obtenerIdClase(String claseSeleccionada) {
+    try (Connection conexion = ConexionDB.getConnection()) {
+        String query = "SELECT id_clase FROM ClaseInteraccion WHERE descripcion_clase = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(query);
+        pstmt.setString(1, claseSeleccionada);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("id_clase");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return -1; // Valor por defecto si no se encuentra la clase
+}
+
+
+    
+    private void actualizarClases(String tipoSeleccionado) {
+    int idTipo = obtenerIdTipo(tipoSeleccionado); // Método para obtener el ID del tipo
+    try (Connection conexion = ConexionDB.getConnection()) {
+        String query = "SELECT descripcion_clase FROM ClaseInteraccion WHERE id_tipo_clase = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(query);
+        pstmt.setInt(1, idTipo);
+        ResultSet rs = pstmt.executeQuery();
+        
+        cmbClase.removeAllItems(); // Limpiar el combobox antes de añadir nuevos ítems
+        while (rs.next()) {
+            cmbClase.addItem(rs.getString("descripcion_clase"));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    
+    private int obtenerIdTipo(String tipoSeleccionado) {
+    switch (tipoSeleccionado) {
+        case "CONSULTA":
+            return 1;
+        case "SOLICITUD":
+            return 2;
+        case "RECLAMO":
+            return 3;
+        default:
+            return -1;
+    }
+}
+
+
+    
+ 
     /**
      * @param args the command line arguments
      */
@@ -420,6 +529,9 @@ public class nueva_interaccion extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarInteraccion;
