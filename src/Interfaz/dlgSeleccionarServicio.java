@@ -14,11 +14,13 @@ public class dlgSeleccionarServicio extends javax.swing.JDialog {
 private Servicio servicioSeleccionado;
 private principal principalFrame;
     
-    public dlgSeleccionarServicio(java.awt.Frame parent, boolean modal) {
+    public dlgSeleccionarServicio(java.awt.Frame parent, boolean modal, String nombreCliente, String dniCliente) {
         super(parent, modal);
         FlatMacDarkLaf.setup();
         initComponents();
         this.principalFrame = (principal) parent;
+        dlgSeleccionarServicio_lblNombre.setText(nombreCliente);
+        dlgSeleccionarServicio_lblDni.setText(dniCliente);
     }
     
      public JTable getTblSeleccionServicio() {
@@ -35,8 +37,8 @@ private principal principalFrame;
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSeleccionServicio = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        pnlDatosCliente_lblDni = new javax.swing.JLabel();
-        pnlDatosCliente_lblNombre = new javax.swing.JLabel();
+        dlgSeleccionarServicio_lblDni = new javax.swing.JLabel();
+        dlgSeleccionarServicio_lblNombre = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -76,9 +78,9 @@ private principal principalFrame;
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("DNI/RUC");
 
-        pnlDatosCliente_lblDni.setText("48322105");
+        dlgSeleccionarServicio_lblDni.setText("48322105");
 
-        pnlDatosCliente_lblNombre.setText("ROY MARKOS HUAYTA LAURA");
+        dlgSeleccionarServicio_lblNombre.setText("ROY MARKOS HUAYTA LAURA");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Nombre");
@@ -96,11 +98,11 @@ private principal principalFrame;
                         .addGap(48, 48, 48)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(pnlDatosCliente_lblNombre)
+                        .addComponent(dlgSeleccionarServicio_lblNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(pnlDatosCliente_lblDni)
+                        .addComponent(dlgSeleccionarServicio_lblDni)
                         .addGap(147, 147, 147))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,8 +115,8 @@ private principal principalFrame;
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(pnlDatosCliente_lblNombre)
-                    .addComponent(pnlDatosCliente_lblDni, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dlgSeleccionarServicio_lblNombre)
+                    .addComponent(dlgSeleccionarServicio_lblDni, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,11 +176,14 @@ private principal principalFrame;
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dlgSeleccionarServicio dialog = new dlgSeleccionarServicio(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+        // Proporciona valores de ejemplo o variables adecuadas para los parámetros
+        String nombreCliente = "Nombre de Ejemplo"; // Sustituye con el valor real
+        String dniCliente = "DNI de Ejemplo"; // Sustituye con el valor real
+        dlgSeleccionarServicio dialog = new dlgSeleccionarServicio(new javax.swing.JFrame(), true, nombreCliente, dniCliente);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
                     }
                 });
                 dialog.setVisible(true);
@@ -188,12 +193,12 @@ private principal principalFrame;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSeleccionarServicio;
+    private javax.swing.JLabel dlgSeleccionarServicio_lblDni;
+    private javax.swing.JLabel dlgSeleccionarServicio_lblNombre;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel pnlDatosCliente_lblDni;
-    private javax.swing.JLabel pnlDatosCliente_lblNombre;
     private javax.swing.JTable tblSeleccionServicio;
     // End of variables declaration//GEN-END:variables
 }
