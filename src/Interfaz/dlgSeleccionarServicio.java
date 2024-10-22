@@ -6,17 +6,19 @@ package Interfaz;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 
 public class dlgSeleccionarServicio extends javax.swing.JDialog {
-
-    
+private Servicio servicioSeleccionado;
+private principal principalFrame;
     
     public dlgSeleccionarServicio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         FlatMacDarkLaf.setup();
         initComponents();
+        this.principalFrame = (principal) parent;
     }
     
      public JTable getTblSeleccionServicio() {
@@ -44,6 +46,11 @@ public class dlgSeleccionarServicio extends javax.swing.JDialog {
         btnSeleccionarServicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSeleccionarServicio.setForeground(new java.awt.Color(255, 255, 255));
         btnSeleccionarServicio.setText("Seleccionar");
+        btnSeleccionarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarServicioActionPerformed(evt);
+            }
+        });
 
         tblSeleccionServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,6 +128,22 @@ public class dlgSeleccionarServicio extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSeleccionarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarServicioActionPerformed
+     seleccionarServicio();
+    }//GEN-LAST:event_btnSeleccionarServicioActionPerformed
+
+    private void seleccionarServicio() {
+    int selectedRow = tblSeleccionServicio.getSelectedRow();
+    if (selectedRow != -1) {
+        int idServicio = (int) tblSeleccionServicio.getValueAt(selectedRow, 0); // Asumiendo que la primera columna es el ID del servicio
+        principalFrame.actualizarDatosPrincipal(idServicio); 
+        this.dispose(); // Cerrar el diálogo
+    } else {
+        JOptionPane.showMessageDialog(this, "Por favor, seleccione un servicio.", "Selección de Servicio", JOptionPane.WARNING_MESSAGE);
+    }
+}
+    
+    
     /**
      * @param args the command line arguments
      */
