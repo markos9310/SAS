@@ -53,7 +53,7 @@ public class nueva_interaccion extends javax.swing.JFrame {
         cmbSubClase = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        chkDerivarOtraArea = new javax.swing.JCheckBox();
+        chkCrearSeguimiento = new javax.swing.JCheckBox();
         cmbArea = new javax.swing.JComboBox<>();
         cmbEstado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -214,10 +214,10 @@ public class nueva_interaccion extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Area:");
 
-        chkDerivarOtraArea.setText("Derivar a otra área");
-        chkDerivarOtraArea.addActionListener(new java.awt.event.ActionListener() {
+        chkCrearSeguimiento.setText("Crear seguimiento");
+        chkCrearSeguimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkDerivarOtraAreaActionPerformed(evt);
+                chkCrearSeguimientoActionPerformed(evt);
             }
         });
 
@@ -245,7 +245,7 @@ public class nueva_interaccion extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkDerivarOtraArea)
+                    .addComponent(chkCrearSeguimiento)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,7 +260,7 @@ public class nueva_interaccion extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(chkDerivarOtraArea)
+                .addComponent(chkCrearSeguimiento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -367,8 +367,8 @@ public class nueva_interaccion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbAreaActionPerformed
 
-    private void chkDerivarOtraAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDerivarOtraAreaActionPerformed
-        if (chkDerivarOtraArea.isSelected()) {
+    private void chkCrearSeguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCrearSeguimientoActionPerformed
+        if (chkCrearSeguimiento.isSelected()) {
             cmbArea.setEnabled(true);
             cmbEstado.setEnabled(true);
             cmbEstado.setSelectedItem("ABIERTO");
@@ -378,7 +378,7 @@ public class nueva_interaccion extends javax.swing.JFrame {
         cmbArea.setSelectedItem("ATENCIÓN AL CLIENTE");
         cmbEstado.setSelectedItem("CERRADO");
         }
-    }//GEN-LAST:event_chkDerivarOtraAreaActionPerformed
+    }//GEN-LAST:event_chkCrearSeguimientoActionPerformed
 
     private void btnCerrarInteraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarInteraccionActionPerformed
        dispose();
@@ -425,7 +425,7 @@ public class nueva_interaccion extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrarInteraccion;
     private javax.swing.JButton btnGuardarInteraccion;
     private javax.swing.JButton btnLimpiarInteraccion;
-    private javax.swing.JCheckBox chkDerivarOtraArea;
+    private javax.swing.JCheckBox chkCrearSeguimiento;
     private javax.swing.JComboBox<String> cmbArea;
     private javax.swing.JComboBox<String> cmbClase;
     private javax.swing.JComboBox<String> cmbEstado;
