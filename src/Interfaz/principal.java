@@ -9,21 +9,32 @@ package Interfaz;
 
 import javax.swing.*;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import conexion.ConexionDB;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author marko
- */
+
+
+
 public class principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form principal
-     */
+    
     public principal() {
         FlatMacDarkLaf.setup();
         initComponents();
         
     }
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +45,7 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlEncabezado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cmbIdentificador = new javax.swing.JComboBox<>();
@@ -117,7 +128,7 @@ public class principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(821, 75));
+        pnlEncabezado.setPreferredSize(new java.awt.Dimension(821, 75));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-autonoma.png"))); // NOI18N
 
@@ -133,21 +144,26 @@ public class principal extends javax.swing.JFrame {
 
         btnBuscar.setBackground(new java.awt.Color(15, 130, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setBackground(new java.awt.Color(15, 130, 255));
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eraser.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlEncabezadoLayout = new javax.swing.GroupLayout(pnlEncabezado);
+        pnlEncabezado.setLayout(pnlEncabezadoLayout);
+        pnlEncabezadoLayout.setHorizontalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 801, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEncabezadoLayout.createSequentialGroup()
                         .addComponent(cmbIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,14 +173,14 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlEncabezadoLayout.setVerticalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cmbIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,7 +188,7 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(pnlEncabezado, java.awt.BorderLayout.PAGE_START);
 
         pnlDatosCliente.setBackground(new java.awt.Color(40, 40, 40));
         pnlDatosCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(40, 40, 40), 1, true));
@@ -695,6 +711,10 @@ public class principal extends javax.swing.JFrame {
         x.setVisible(true);
     }//GEN-LAST:event_btnNuevaInteraccionActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        buscarPorDNI();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -727,6 +747,73 @@ public class principal extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void buscarPorDNI() {
+        String dni = txtIdentificador.getText();
+        if (dni.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un DNI.");
+            return;
+        }
+
+        List<Servicio> servicios = obtenerServiciosPorDNI(dni);
+
+        if (servicios.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontraron servicios para el DNI ingresado.");
+        } else {
+            mostrarDlgSeleccionarServicio(servicios);
+        }
+    }
+    
+    
+    private List<Servicio> obtenerServiciosPorDNI(String dni) {
+    List<Servicio> servicios = new ArrayList<>();
+
+    String query = "SELECT id_servicio, tipo_servicio, CONCAT(avenida_servicio, ' ', num_casa_servicio, ' ', interior_servicio, ' ', urbanizacion_servicio, ' ', distrito_servicio, ' ', provincia_servicio, ' ', departamento_servicio) AS direccion_servicio, estado_servicio, fecha_inicio_servicio " +
+                   "FROM Servicio " +
+                   "JOIN Cliente ON Servicio.id_cliente_servicio = Cliente.id_cliente " +
+                   "WHERE Cliente.dni_cliente = ?";
+
+    try (Connection connection = ConexionDB.getConnection();
+         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        preparedStatement.setString(1, dni);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            Servicio servicio = new Servicio();
+            servicio.setIdServicio(resultSet.getInt("id_servicio"));
+            servicio.setTipoServicio(resultSet.getString("tipo_servicio"));
+            servicio.setDireccionServicio(resultSet.getString("direccion_servicio"));
+            servicio.setEstado(resultSet.getString("estado_servicio"));
+            servicio.setFechaContratacion(resultSet.getDate("fecha_inicio_servicio"));
+            servicios.add(servicio);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+    return servicios;
+}
+   // Método para mostrar el diálogo con los servicios
+private void mostrarDlgSeleccionarServicio(List<Servicio> servicios) {
+    dlgSeleccionarServicio dialog = new dlgSeleccionarServicio(this, true);
+
+    JTable tblSeleccionServicio = dialog.getTblSeleccionServicio();
+    DefaultTableModel model = (DefaultTableModel) tblSeleccionServicio.getModel();
+
+    model.setRowCount(0);
+
+    for (Servicio servicio : servicios) {
+        model.addRow(new Object[]{
+            servicio.getIdServicio(),
+            servicio.getTipoServicio(),
+            servicio.getDireccionServicio(),
+            servicio.getEstado(),
+            servicio.getFechaContratacion()
+        });
+    }
+
+    dialog.setVisible(true);
+} 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;
@@ -786,7 +873,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -822,6 +908,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel pnlDomicilioFacturacion_lblNumeroCasa;
     private javax.swing.JLabel pnlDomicilioFacturacion_lblProvincia;
     private javax.swing.JLabel pnlDomicilioFacturacion_lblUrb;
+    private javax.swing.JPanel pnlEncabezado;
     private javax.swing.JTable tblInteracciones;
     private javax.swing.JTextField txtIdentificador;
     // End of variables declaration//GEN-END:variables
