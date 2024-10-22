@@ -703,9 +703,13 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaInteraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaInteraccionActionPerformed
-        nueva_interaccion x=new nueva_interaccion();
-        x.setLocationRelativeTo(null);
-        x.setVisible(true);
+        int idServicio = Integer.parseInt(lblIdServicio.getText());
+        String dniCliente = pnlDatosCliente_lblDni.getText();
+        String nombreCliente = pnlDatosCliente_lblNombre.getText();
+
+        nueva_interaccion nuevaInteraccion = new nueva_interaccion(idServicio, dniCliente, nombreCliente);
+        nuevaInteraccion.setLocationRelativeTo(null);
+        nuevaInteraccion.setVisible(true);
     }//GEN-LAST:event_btnNuevaInteraccionActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
