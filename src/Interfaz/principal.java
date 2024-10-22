@@ -584,12 +584,10 @@ public class principal extends javax.swing.JFrame {
 
         tblInteracciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1000001", "2024-09-01 08:30:00", "CONSULTA - VENTA - SERVICIO", "CERRADO", "E10001", "CARLOS ALBERTO GARCÍA FERNANDEZ"},
-                {"1000002", "2024-09-02 14:45:00", "Consulta", "CERRADO", "E10001", "CARLOS ALBERTO GARCÍA FERNANDEZ"},
-                {"1000003", "2024-09-03 10:15:00 ", "Solicitud", "PENDIENTE", "E10008", "MARIA LOPEZ MELGAR"}
+
             },
             new String [] {
-                "Id. Inter.", "Fecha Inicio", "Tipo de interacción", "Estado", "Id. Empleado", "Nombre agente"
+                "Id. Inter.", "Fecha Inicio", "Tipo de interacción", "Estado", "Id. Empleado", "Nombre agente", "Área asignada"
             }
         ));
         tblInteracciones.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
@@ -598,6 +596,14 @@ public class principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblInteracciones);
         if (tblInteracciones.getColumnModel().getColumnCount() > 0) {
             tblInteracciones.getColumnModel().getColumn(0).setMaxWidth(70);
+            tblInteracciones.getColumnModel().getColumn(1).setMinWidth(120);
+            tblInteracciones.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tblInteracciones.getColumnModel().getColumn(2).setMinWidth(200);
+            tblInteracciones.getColumnModel().getColumn(2).setPreferredWidth(200);
+            tblInteracciones.getColumnModel().getColumn(3).setMinWidth(70);
+            tblInteracciones.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tblInteracciones.getColumnModel().getColumn(4).setMinWidth(30);
+            tblInteracciones.getColumnModel().getColumn(4).setPreferredWidth(30);
         }
 
         btnNuevaInteraccion.setBackground(new java.awt.Color(15, 130, 255));
@@ -737,21 +743,36 @@ public class principal extends javax.swing.JFrame {
         });
     }
     
-    private void buscarPorDNI() {
-        String dni = txtIdentificador.getText();
-        if (dni.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese un DNI.");
-            return;
-        }
-
-        List<Servicio> servicios = obtenerServiciosPorDNI(dni);
-
-        if (servicios.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No se encontraron servicios para el DNI ingresado.");
-        } else {
-            mostrarDlgSeleccionarServicio(servicios);
-        }
+ private void buscarPorDNI() {
+    String dni = txtIdentificador.getText();
+    if (dni.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese un DNI.");
+        return;
     }
+
+    try (Connection conexion = ConexionDB.getConnection()) {
+        String query = "SELECT * FROM Cliente WHERE dni_cliente = ?";
+        PreparedStatement pstmt = conexion.prepareStatement(query);
+        pstmt.setString(1, dni);
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            String nombreCliente = rs.getString("nombre_cliente"); // Asegúrate de definir nombreCliente aquí
+
+            List<Servicio> servicios = obtenerServiciosPorDNI(dni);
+            if (servicios.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron servicios para el DNI ingresado.");
+            } else {
+                // Ahora llamamos a mostrarDlgSeleccionarServicio con nombreCliente y dni
+                mostrarDlgSeleccionarServicio(servicios, nombreCliente, dni);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Cliente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
     
     
     private List<Servicio> obtenerServiciosPorDNI(String dni) {
@@ -783,8 +804,8 @@ public class principal extends javax.swing.JFrame {
     return servicios;
 }
    // Método para mostrar el diálogo con los servicios
-private void mostrarDlgSeleccionarServicio(List<Servicio> servicios) {
-    dlgSeleccionarServicio dialog = new dlgSeleccionarServicio(this, true);
+private void mostrarDlgSeleccionarServicio(List<Servicio> servicios, String nombreCliente, String dniCliente) {
+    dlgSeleccionarServicio dialog = new dlgSeleccionarServicio(this, true, nombreCliente, dniCliente);
 
     JTable tblSeleccionServicio = dialog.getTblSeleccionServicio();
     DefaultTableModel model = (DefaultTableModel) tblSeleccionServicio.getModel();
@@ -850,11 +871,50 @@ void actualizarDatosPrincipal(int idServicio) {
             pnlDireccionInstalacion_lblProvincia.setText(rsServicio.getString("provincia_servicio"));
             pnlDireccionInstalacion_lblDepartamento.setText(rsServicio.getString("departamento_servicio"));
         }
+        
+        // Cargar interacciones en la tabla
+        cargarInteracciones(idServicio);
 
     } catch (SQLException e) {
         e.printStackTrace();
     }
 }
+
+private void cargarInteracciones(int idServicio) {
+    try (Connection conexion = ConexionDB.getConnection()) {
+        String query = "SELECT i.id_interaccion, i.inicio_interaccion, " +
+                       "CONCAT(TipoInteraccion.descripcion_tipo, ' - ', ClaseInteraccion.descripcion_clase, ' - ', SubclaseInteraccion.descripcion_subclase) AS tipo_interaccion, " +
+                       "i.estado_interaccion, i.id_agente_interaccion, Agente.nombre AS nombre_agente, Area.nombre AS area_nombre " +
+                       "FROM Interaccion i " +
+                       "JOIN TipoInteraccion ON i.id_tipo_interaccion = TipoInteraccion.id_tipo " +
+                       "JOIN ClaseInteraccion ON i.id_clase_interaccion = ClaseInteraccion.id_clase " +
+                       "JOIN SubclaseInteraccion ON i.id_subclase_interaccion = SubclaseInteraccion.id_subclase " +
+                       "JOIN Agente ON i.id_agente_interaccion = Agente.id_agente " +
+                       "JOIN Area ON i.id_area_interaccion = Area.id_area " +
+                       "WHERE i.id_servicio_interaccion = ?";
+
+        PreparedStatement pstmt = conexion.prepareStatement(query);
+        pstmt.setInt(1, idServicio);
+        ResultSet rs = pstmt.executeQuery();
+        DefaultTableModel model = (DefaultTableModel) tblInteracciones.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de añadir nuevos datos
+        while (rs.next()) {
+            Object[] row = new Object[7]; // Actualizado para 7 columnas
+            row[0] = rs.getInt("id_interaccion");
+            row[1] = rs.getTimestamp("inicio_interaccion");
+            row[2] = rs.getString("tipo_interaccion");
+            row[3] = rs.getString("estado_interaccion");
+            row[4] = rs.getInt("id_agente_interaccion");
+            row[5] = rs.getString("nombre_agente");
+            row[6] = rs.getString("area_nombre"); // Nueva columna para el área
+            model.addRow(row);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+
 
 
 

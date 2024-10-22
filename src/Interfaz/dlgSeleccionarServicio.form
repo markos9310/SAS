@@ -44,11 +44,11 @@
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="pnlDatosCliente_lblNombre" min="-2" max="-2" attributes="0"/>
+                          <Component id="dlgSeleccionarServicio_lblNombre" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="pnlDatosCliente_lblDni" min="-2" max="-2" attributes="0"/>
+                          <Component id="dlgSeleccionarServicio_lblDni" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -66,8 +66,8 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlDatosCliente_lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlDatosCliente_lblDni" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="dlgSeleccionarServicio_lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dlgSeleccionarServicio_lblDni" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -159,12 +159,12 @@
             <Property name="text" type="java.lang.String" value="DNI/RUC"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="pnlDatosCliente_lblDni">
+        <Component class="javax.swing.JLabel" name="dlgSeleccionarServicio_lblDni">
           <Properties>
             <Property name="text" type="java.lang.String" value="48322105"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="pnlDatosCliente_lblNombre">
+        <Component class="javax.swing.JLabel" name="dlgSeleccionarServicio_lblNombre">
           <Properties>
             <Property name="text" type="java.lang.String" value="ROY MARKOS HUAYTA LAURA"/>
           </Properties>

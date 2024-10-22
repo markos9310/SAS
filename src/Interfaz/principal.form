@@ -1033,37 +1033,14 @@
                     <Component class="javax.swing.JTable" name="tblInteracciones">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="6" rowCount="3">
-                            <Column editable="true" title="Id. Inter." type="java.lang.Object">
-                              <Data value="1000001"/>
-                              <Data value="1000002"/>
-                              <Data value="1000003"/>
-                            </Column>
-                            <Column editable="true" title="Fecha Inicio" type="java.lang.Object">
-                              <Data value="2024-09-01 08:30:00"/>
-                              <Data value="2024-09-02 14:45:00"/>
-                              <Data value="2024-09-03 10:15:00 "/>
-                            </Column>
-                            <Column editable="true" title="Tipo de interacci&#xf3;n" type="java.lang.Object">
-                              <Data value="CONSULTA - VENTA - SERVICIO"/>
-                              <Data value="Consulta"/>
-                              <Data value="Solicitud"/>
-                            </Column>
-                            <Column editable="true" title="Estado" type="java.lang.Object">
-                              <Data value="CERRADO"/>
-                              <Data value="CERRADO"/>
-                              <Data value="PENDIENTE"/>
-                            </Column>
-                            <Column editable="true" title="Id. Empleado" type="java.lang.Object">
-                              <Data value="E10001"/>
-                              <Data value="E10001"/>
-                              <Data value="E10008"/>
-                            </Column>
-                            <Column editable="true" title="Nombre agente" type="java.lang.Object">
-                              <Data value="CARLOS ALBERTO GARC&#xcd;A FERNANDEZ"/>
-                              <Data value="CARLOS ALBERTO GARC&#xcd;A FERNANDEZ"/>
-                              <Data value="MARIA LOPEZ MELGAR"/>
-                            </Column>
+                          <Table columnCount="7" rowCount="0">
+                            <Column editable="true" title="Id. Inter." type="java.lang.Object"/>
+                            <Column editable="true" title="Fecha Inicio" type="java.lang.Object"/>
+                            <Column editable="true" title="Tipo de interacci&#xf3;n" type="java.lang.Object"/>
+                            <Column editable="true" title="Estado" type="java.lang.Object"/>
+                            <Column editable="true" title="Id. Empleado" type="java.lang.Object"/>
+                            <Column editable="true" title="Nombre agente" type="java.lang.Object"/>
+                            <Column editable="true" title="&#xc1;rea asignada" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="autoResizeMode" type="int" value="1"/>
@@ -1074,17 +1051,22 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="-1" minWidth="120" prefWidth="120" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="-1" minWidth="200" prefWidth="200" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="-1" minWidth="70" prefWidth="70" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="30" prefWidth="30" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
