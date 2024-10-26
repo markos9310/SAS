@@ -24,11 +24,11 @@ import javax.swing.table.DefaultTableModel;
 public class principal extends javax.swing.JFrame {
 
     
-    public principal() {
+    public principal(String nombreyarea) {
         FlatMacDarkLaf.setup();
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        txtAgente.setText(nombreyarea); // Mostrar el nombre del agente y area
     }
     
 
@@ -38,7 +38,7 @@ public class principal extends javax.swing.JFrame {
 
         pnlEncabezado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtAgente = new javax.swing.JLabel();
         cmbIdentificador = new javax.swing.JComboBox<>();
         txtIdentificador = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -123,10 +123,10 @@ public class principal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-autonoma.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user14.png"))); // NOI18N
-        jLabel2.setText("Roy Markos Huayta Laura");
-        jLabel2.setName(""); // NOI18N
+        txtAgente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtAgente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user14.png"))); // NOI18N
+        txtAgente.setText("Roy Markos Huayta Laura [Atención al cliente]");
+        txtAgente.setName(""); // NOI18N
 
         cmbIdentificador.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cmbIdentificador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "ID CLIENTE", "ID SERVICIO" }));
@@ -153,7 +153,7 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 801, Short.MAX_VALUE)
                 .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtAgente, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEncabezadoLayout.createSequentialGroup()
                         .addComponent(cmbIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,7 +169,7 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
             .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(txtAgente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cmbIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -741,7 +741,7 @@ public class principal extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new principal().setVisible(true);
+                new principal("Agente Desconocido").setVisible(true);
                 
             }
         });
@@ -936,7 +936,6 @@ private void cargarInteracciones(int idServicio) {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
@@ -945,21 +944,6 @@ private void cargarInteracciones(int idServicio) {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel59;
@@ -983,7 +967,6 @@ private void cargarInteracciones(int idServicio) {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1017,6 +1000,7 @@ private void cargarInteracciones(int idServicio) {
     private javax.swing.JLabel pnlDomicilioFacturacion_lblUrb;
     private javax.swing.JPanel pnlEncabezado;
     private javax.swing.JTable tblInteracciones;
+    private javax.swing.JLabel txtAgente;
     private javax.swing.JTextField txtIdentificador;
     // End of variables declaration//GEN-END:variables
 }
