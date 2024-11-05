@@ -706,8 +706,9 @@ public class principal extends javax.swing.JFrame {
         int idServicio = Integer.parseInt(lblIdServicio.getText());
         String dniCliente = pnlDatosCliente_lblDni.getText();
         String nombreCliente = pnlDatosCliente_lblNombre.getText();
+        String agenteYArea = txtAgente.getText();
 
-        nueva_interaccion nuevaInteraccion = new nueva_interaccion(idServicio, dniCliente, nombreCliente);
+        nueva_interaccion nuevaInteraccion = new nueva_interaccion(idServicio, dniCliente, nombreCliente, agenteYArea);
         nuevaInteraccion.setLocationRelativeTo(null);
         nuevaInteraccion.setVisible(true);
     }//GEN-LAST:event_btnNuevaInteraccionActionPerformed
