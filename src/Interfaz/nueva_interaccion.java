@@ -20,28 +20,48 @@ public class nueva_interaccion extends javax.swing.JFrame {
 private int idServicio;
     private String dniCliente;
     private String nombreCliente;
+    private String agenteYArea;
+
+    private nueva_interaccion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     /**
      * Creates new form principal
      */
-    public nueva_interaccion() {
-        FlatMacDarkLaf.setup();
-        initComponents();
-        
+    
+    
+    private void cargarAreas() {
+        try (Connection conexion = ConexionDB.getConnection()) {
+            String query = "SELECT nombre FROM Area";
+            PreparedStatement pstmt = conexion.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                cmbArea.addItem(rs.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     
 
-    nueva_interaccion(int idServicio, String dniCliente, String nombreCliente) {
-       this.idServicio = idServicio;
+       public nueva_interaccion(int idServicio, String dniCliente, String nombreCliente, String agenteYArea) {
+        this.idServicio = idServicio;
         this.dniCliente = dniCliente;
         this.nombreCliente = nombreCliente;
+        this.agenteYArea = agenteYArea;
         FlatMacDarkLaf.setup();
         initComponents();
         this.setLocationRelativeTo(null);
+
         // Asignar valores a los labels
         lblIdServicio.setText(String.valueOf(idServicio));
         lblDni.setText(dniCliente);
         lblNombre.setText(nombreCliente);
+
+        // Cargar las áreas en el ComboBox
+        cargarAreas();
     }
 
     /**
@@ -259,7 +279,6 @@ private int idServicio;
         });
 
         cmbArea.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        cmbArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATENCIÓN AL CLIENTE", "CONTABILIDAD", "BACK OFFICE", "VENTAS" }));
         cmbArea.setEnabled(false);
         cmbArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,7 +299,7 @@ private int idServicio;
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkCrearSeguimiento)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -291,7 +310,7 @@ private int idServicio;
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,6 +339,11 @@ private int idServicio;
         btnGuardarInteraccion.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarInteraccion.setText("GUARDAR");
         btnGuardarInteraccion.setPreferredSize(new java.awt.Dimension(84, 30));
+        btnGuardarInteraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarInteraccionActionPerformed(evt);
+            }
+        });
 
         btnLimpiarInteraccion.setBackground(new java.awt.Color(15, 130, 255));
         btnLimpiarInteraccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -434,6 +458,64 @@ private int idServicio;
     // Actualiza las subclases en base a la clase seleccionada
     actualizarSubClases(claseSeleccionada);
     }//GEN-LAST:event_cmbClaseActionPerformed
+
+    private void btnGuardarInteraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarInteraccionActionPerformed
+            // Capturar los datos de los componentes
+    int idServicio = Integer.parseInt(lblIdServicio.getText());  // Asumiendo que lblIdServicio tiene el ID del servicio
+    String tipo = (String) cmbTipo.getSelectedItem();
+    String clase = (String) cmbClase.getSelectedItem();
+    String subclase = (String) cmbSubClase.getSelectedItem();
+    String estado = (String) cmbEstado.getSelectedItem();
+    String area = (String) cmbArea.getSelectedItem();
+    String notasInteraccion = txtNotasInteraccion.getText();
+
+    // Obtener el nombre completo y área del txtAgente
+    
+    String[] partes = agenteYArea.split("\\[|\\]");
+    
+    String nombreAgente = partes[0].trim();
+    String areaAgente = partes[1].trim();
+
+    // Validar los datos
+    if (tipo.isEmpty() || clase.isEmpty() || subclase.isEmpty() || estado.isEmpty() || area.isEmpty() || notasInteraccion.isEmpty() || nombreAgente.isEmpty() || areaAgente.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Insertar datos en la base de datos
+    try (Connection conexion = ConexionDB.getConnection()) {
+        // Recuperar el ID del agente según su nombre
+        String queryAgente = "SELECT id_agente FROM Agente WHERE nombre = ?";
+        PreparedStatement pstmtAgente = conexion.prepareStatement(queryAgente);
+        pstmtAgente.setString(1, nombreAgente);
+        ResultSet rs = pstmtAgente.executeQuery();
+
+        if (rs.next()) {
+            int idAgente = rs.getInt("id_agente");
+
+            String query = "INSERT INTO Interaccion (inicio_interaccion, id_tipo_interaccion, id_clase_interaccion, id_subclase_interaccion, estado_interaccion, id_agente_interaccion, id_servicio_interaccion, id_area_interaccion, detalles_interaccion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conexion.prepareStatement(query);
+            pstmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));  // Asumiendo que necesitas la fecha y hora actual
+            pstmt.setInt(2, cmbTipo.getSelectedIndex() + 1);  // Ajusta según sea necesario
+            pstmt.setInt(3, cmbClase.getSelectedIndex() + 1);  // Ajusta según sea necesario
+            pstmt.setInt(4, cmbSubClase.getSelectedIndex() + 1);  // Ajusta según sea necesario
+            pstmt.setString(5, estado);
+            pstmt.setInt(6, idAgente);
+            pstmt.setInt(7, idServicio);
+            pstmt.setInt(8, cmbArea.getSelectedIndex() + 1);  // Ajusta según sea necesario
+            pstmt.setString(9, notasInteraccion);
+
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Interacción guardada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al encontrar el agente.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al guardar la interacción.", "Error", JOptionPane.ERROR_MESSAGE);
+        System.out.println(e);
+    }
+    }//GEN-LAST:event_btnGuardarInteraccionActionPerformed
     
     private void actualizarSubClases(String claseSeleccionada) {
     int idClase = obtenerIdClase(claseSeleccionada); // Método para obtener el ID de la clase
