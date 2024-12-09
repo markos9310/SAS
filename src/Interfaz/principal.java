@@ -17,18 +17,57 @@ import java.util.ArrayList;
 import java.util.List;
 import conexion.ConexionDB;
 import javax.swing.table.DefaultTableModel;
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 
 
 public class principal extends javax.swing.JFrame {
-
-    
+    private WebSocketClient clienteWebSocket;
+    private int idServicio;
     public principal(String nombreyarea) {
         FlatMacDarkLaf.setup();
         initComponents();
         this.setLocationRelativeTo(null);
-        txtAgente.setText(nombreyarea); // Mostrar el nombre del agente y area
+        txtAgente.setText(nombreyarea); // Mostrar el nombre del agente y área
+
+        try {
+            clienteWebSocket = new WebSocketClient(new URI("ws://localhost:8080")) {
+                @Override
+                public void onOpen(ServerHandshake handshakedata) {
+                    System.out.println("Conectado al servidor WebSocket");
+                }
+
+                @Override
+                public void onMessage(String message) {
+                    System.out.println("Mensaje recibido: " + message);
+                    if (message.equals("ACTUALIZAR")) {
+                        // Debes proporcionar el idServicio correcto aquí
+                        recargarInteracciones(idServicio); // Asegúrate de tener definido idServicio
+                    }
+                }
+
+
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    System.out.println("Desconectado del servidor WebSocket");
+                }
+
+                @Override
+                public void onError(Exception ex) {
+                    ex.printStackTrace();
+                }
+            };
+            clienteWebSocket.connect();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+    public void recargarInteracciones(int idServicio) {
+        cargarInteracciones(idServicio); // Llama al método existente para cargar las interacciones
     }
     
 
@@ -832,6 +871,7 @@ private void mostrarDlgSeleccionarServicio(List<Servicio> servicios, String nomb
     
 } 
 
+
 void actualizarDatosPrincipal(int idServicio) {
     try (Connection conexion = ConexionDB.getConnection()) {
         // Consultar el cliente
@@ -919,9 +959,6 @@ private void cargarInteracciones(int idServicio) {
     }
 }
 
-public void recargarInteracciones(int idServicio) {
-    cargarInteracciones(idServicio); // Llama al método existente para cargar las interacciones
-}
 
 
 
