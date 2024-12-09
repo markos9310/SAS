@@ -11,13 +11,20 @@ import javax.swing.*;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import conexion.ConexionDB;
 import java.sql.*;
+import org.java_websocket.client.WebSocketClient;
+import java.net.URI; 
+import java.net.URISyntaxException;
+import org.java_websocket.handshake.ServerHandshake;
+
 
 /**
  *
  * @author marko
  */
 public class nueva_interaccion extends javax.swing.JFrame {
-private int idServicio;
+    private WebSocketClient clienteWebSocket;
+    
+    private int idServicio;
     private String dniCliente;
     private String nombreCliente;
     private String agenteYArea;
@@ -62,6 +69,33 @@ private int idServicio;
         lblNombre.setText(nombreCliente);
         // Cargar las áreas en el ComboBox
         cargarAreas();
+        
+        try {
+            clienteWebSocket = new WebSocketClient(new URI("ws://localhost:8080")) {
+                @Override
+                public void onOpen(ServerHandshake handshakedata) {
+                    System.out.println("Conectado al servidor WebSocket");
+                }
+
+                @Override
+                public void onMessage(String message) {
+                    // No necesitamos manejar mensajes aquí
+                }
+
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    System.out.println("Desconectado del servidor WebSocket");
+                }
+
+                @Override
+                public void onError(Exception ex) {
+                    ex.printStackTrace();
+                }
+            };
+            clienteWebSocket.connect();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -508,6 +542,10 @@ private int idServicio;
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Interacción guardada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             ventanaPrincipal.recargarInteracciones(idServicio);
+            
+            if (clienteWebSocket != null && clienteWebSocket.isOpen()) {
+                clienteWebSocket.send("ACTUALIZAR"); // Enviar mensaje de actualización
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Error al encontrar el agente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
