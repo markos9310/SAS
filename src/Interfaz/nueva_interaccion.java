@@ -21,6 +21,7 @@ private int idServicio;
     private String dniCliente;
     private String nombreCliente;
     private String agenteYArea;
+    private principal ventanaPrincipal;
 
     private nueva_interaccion() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -46,7 +47,8 @@ private int idServicio;
     
     
 
-       public nueva_interaccion(int idServicio, String dniCliente, String nombreCliente, String agenteYArea) {
+    public nueva_interaccion(principal ventanaPrincipal, int idServicio, String dniCliente, String nombreCliente, String agenteYArea) {
+        this.ventanaPrincipal = ventanaPrincipal; // Guardar la referencia de la ventana principal
         this.idServicio = idServicio;
         this.dniCliente = dniCliente;
         this.nombreCliente = nombreCliente;
@@ -54,12 +56,10 @@ private int idServicio;
         FlatMacDarkLaf.setup();
         initComponents();
         this.setLocationRelativeTo(null);
-
         // Asignar valores a los labels
         lblIdServicio.setText(String.valueOf(idServicio));
         lblDni.setText(dniCliente);
         lblNombre.setText(nombreCliente);
-
         // Cargar las áreas en el ComboBox
         cargarAreas();
     }
@@ -507,6 +507,7 @@ private int idServicio;
 
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Interacción guardada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            ventanaPrincipal.recargarInteracciones(idServicio);
         } else {
             JOptionPane.showMessageDialog(this, "Error al encontrar el agente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
