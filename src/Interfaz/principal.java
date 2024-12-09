@@ -708,7 +708,7 @@ public class principal extends javax.swing.JFrame {
         String nombreCliente = pnlDatosCliente_lblNombre.getText();
         String agenteYArea = txtAgente.getText();
 
-        nueva_interaccion nuevaInteraccion = new nueva_interaccion(idServicio, dniCliente, nombreCliente, agenteYArea);
+        nueva_interaccion nuevaInteraccion = new nueva_interaccion(this, idServicio, dniCliente, nombreCliente, agenteYArea);
         nuevaInteraccion.setLocationRelativeTo(null);
         nuevaInteraccion.setVisible(true);
     }//GEN-LAST:event_btnNuevaInteraccionActionPerformed
@@ -918,6 +918,11 @@ private void cargarInteracciones(int idServicio) {
         e.printStackTrace();
     }
 }
+
+public void recargarInteracciones(int idServicio) {
+    cargarInteracciones(idServicio); // Llama al método existente para cargar las interacciones
+}
+
 
 
 
