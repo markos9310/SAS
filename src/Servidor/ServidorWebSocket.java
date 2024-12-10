@@ -34,6 +34,7 @@ private static Set<WebSocket> clientes = Collections.synchronizedSet(new HashSet
     @Override
     public void onMessage(WebSocket conn, String message) {
         // Manejar mensajes recibidos de los clientes si es necesario
+        System.out.println("Mensaje recibido del cliente: " + conn.getRemoteSocketAddress() + " - " + message);
     }
 
     @Override
@@ -46,11 +47,14 @@ private static Set<WebSocket> clientes = Collections.synchronizedSet(new HashSet
         System.out.println("Servidor WebSocket iniciado en: " + getAddress());
     }
 
-    public static void notificarClientes(String mensaje) {
-        for (WebSocket cliente : clientes) {
-            cliente.send(mensaje);
-        }
+    public static void notificarClientes(String mensaje) { 
+   System.out.println("Notificando a todos los clientes: " + mensaje);
+    for (WebSocket cliente : clientes) {
+        System.out.println("Enviando mensaje a cliente: " + cliente.getRemoteSocketAddress());
+        cliente.send(mensaje);
     }
+}
+
 
     public static void main(String[] args) {
         InetSocketAddress address = new InetSocketAddress("localhost", 8080);

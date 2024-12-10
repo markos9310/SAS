@@ -133,6 +133,8 @@ public class login extends javax.swing.JFrame {
             String nombreAgente = rs.getString("nombre");
             String nombreArea = rs.getString("area_nombre");
             String agenteYArea = nombreAgente + " [" + nombreArea + "]";
+            //int idServicio = rs.getInt("id_servicio"); // OBTENER ID_SERVICIO
+            //System.out.println("Iniciando sesión con idServicio: " + idServicio); // IMPRIMIR ID_SERVICIO
 
             // Abrir la ventana principal y pasar el nombre del agente y el área
             principal ventanaPrincipal = new principal(agenteYArea);

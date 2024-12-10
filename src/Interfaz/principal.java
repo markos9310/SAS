@@ -45,10 +45,12 @@ public class principal extends javax.swing.JFrame {
                 public void onMessage(String message) {
                     System.out.println("Mensaje recibido: " + message);
                     if (message.equals("ACTUALIZAR")) {
-                        // Debes proporcionar el idServicio correcto aquí
-                        recargarInteracciones(idServicio); // Asegúrate de tener definido idServicio
+                        // Llamar al método para recargar las interacciones
+                        System.out.println("Recargando interacciones con idServicio: " + idServicio);
+                        recargarInteracciones(idServicio); // Usar idServicio aquí
                     }
                 }
+
 
 
                 @Override
@@ -58,15 +60,19 @@ public class principal extends javax.swing.JFrame {
 
                 @Override
                 public void onError(Exception ex) {
+                    System.out.println("Error en WebSocket: " + ex.getMessage());
                     ex.printStackTrace();
                 }
             };
             clienteWebSocket.connect();
         } catch (URISyntaxException e) {
+            System.out.println("Error en URI: " + e.getMessage());
+            
             e.printStackTrace();
         }
     }
     public void recargarInteracciones(int idServicio) {
+        System.out.println("Recargando interacciones desde recargarInteracciones con idServicio: " + idServicio);
         cargarInteracciones(idServicio); // Llama al método existente para cargar las interacciones
     }
     
@@ -926,6 +932,7 @@ void actualizarDatosPrincipal(int idServicio) {
 }
 
 private void cargarInteracciones(int idServicio) {
+    System.out.println("Cargando interacciones para idServicio: " + idServicio);
     try (Connection conexion = ConexionDB.getConnection()) {
         String query = "SELECT i.id_interaccion, i.inicio_interaccion, " +
                        "CONCAT(TipoInteraccion.descripcion_tipo, ' - ', ClaseInteraccion.descripcion_clase, ' - ', SubclaseInteraccion.descripcion_subclase) AS tipo_interaccion, " +
@@ -944,6 +951,7 @@ private void cargarInteracciones(int idServicio) {
         DefaultTableModel model = (DefaultTableModel) tblInteracciones.getModel();
         model.setRowCount(0); // Limpiar la tabla antes de añadir nuevos datos
         while (rs.next()) {
+            System.out.println("Añadiendo interacción a la tabla: " + rs.getInt("id_interaccion"));
             Object[] row = new Object[7]; // Actualizado para 7 columnas
             row[0] = rs.getInt("id_interaccion");
             row[1] = rs.getTimestamp("inicio_interaccion");
@@ -955,6 +963,7 @@ private void cargarInteracciones(int idServicio) {
             model.addRow(row);
         }
     } catch (SQLException e) {
+        System.out.println("Error al cargar interacciones: " + e.getMessage());
         e.printStackTrace();
     }
 }

@@ -496,6 +496,7 @@ public class nueva_interaccion extends javax.swing.JFrame {
     private void btnGuardarInteraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarInteraccionActionPerformed
             // Capturar los datos de los componentes
     int idServicio = Integer.parseInt(lblIdServicio.getText());  // Asumiendo que lblIdServicio tiene el ID del servicio
+    System.out.println("Guardando interacción para idServicio: " + idServicio);
     String tipo = (String) cmbTipo.getSelectedItem();
     String clase = (String) cmbClase.getSelectedItem();
     String subclase = (String) cmbSubClase.getSelectedItem();
@@ -541,9 +542,13 @@ public class nueva_interaccion extends javax.swing.JFrame {
 
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Interacción guardada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            
+            System.out.println("Notificando a la ventana principal para recargar interacciones");
+            
             ventanaPrincipal.recargarInteracciones(idServicio);
             
             if (clienteWebSocket != null && clienteWebSocket.isOpen()) {
+                System.out.println("Enviando mensaje de ACTUALIZAR al servidor WebSocket");
                 clienteWebSocket.send("ACTUALIZAR"); // Enviar mensaje de actualización
             }
         } else {
